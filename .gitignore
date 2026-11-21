@@ -22,3 +22,7 @@ venv/
 Thumbs.db
 *.swp
 *.bak
+
+# Configuracion de editor y scripts internos
+.vscode/
+scripts/
