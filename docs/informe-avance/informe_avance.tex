@@ -1,0 +1,193 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands]{babel}
+\usepackage[top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small EPIS UNSA -- Feria de Proyectos 2026}
+\fancyhead[R]{\small Informe de Avance}
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+% ==================== PORTADA ====================
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    {\Large \textbf{UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA}}\\[0.3cm]
+    {\large \textbf{FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS}}\\[0.3cm]
+    {\large \textbf{ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS}}\\[1.5cm]
+
+    \rule{\linewidth}{0.5mm}\\[0.4cm]
+    {\LARGE \textbf{INFORME DE AVANCE DE PROYECTO}}\\[0.3cm]
+    {\large \textbf{Sistema de Gestión y Seguimiento de Tareas para Mitigar Retrasos en Trabajos Colaborativos}}\\[0.2cm]
+    \rule{\linewidth}{0.5mm}\\[1.2cm]
+
+    \textbf{Feria de Proyectos 2026 -- Categoría I (Nivel Básico)}\\[1.5cm]
+
+    \begin{minipage}{0.85\textwidth}
+        \textbf{Equipo de Trabajo:}
+        \begin{itemize}[leftmargin=*,itemsep=0.15cm]
+            \item Mamani Huayhua, Denny Joaquin (\texttt{dmamanihuayh@unsa.edu.pe})
+            \item Vicente Medina, Eder Lucio (\texttt{evicentem@unsa.edu.pe})
+            \item Salas Zegarra, Marco Antonio (\texttt{msalasze@unsa.edu.pe})
+            \item Neyra Chambilla, Rodrigo Enrique (\texttt{rneyra@unsa.edu.pe})
+            \item Jala Paricanaza, Ronald David (\texttt{rjala@unsa.edu.pe})
+        \end{itemize}
+        \vspace{0.4cm}
+        \textbf{Docente Asesor:}
+        \begin{itemize}[leftmargin=*,itemsep=0.15cm]
+            \item Mg. William Milton Bornas Rios (\texttt{wbornas@unsa.edu.pe})
+        \end{itemize}
+    \end{minipage}
+
+    \vfill
+    {\large Arequipa, Perú\\ 2026}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ==================== CONTENIDO ====================
+
+\section{¿De qué trata este proyecto?}
+Cuando nos toca hacer trabajos en grupo en la universidad o en cualquier equipo de estudio, casi siempre nos organizamos por grupos de WhatsApp. Aunque es fácil de usar, la realidad es que genera mucho desorden: los archivos importantes se pierden entre decenas de mensajes, no queda claro qué le toca hacer a cada compañero y la mayoría de veces terminamos avanzando a última hora con entregas apresuradas.
+
+Este proyecto propone una solución práctica: una aplicación web sencilla e intuitiva diseñada para que los equipos puedan coordinar sus proyectos sin estrés. La aplicación combina dos herramientas visuales muy conocidas:
+\begin{enumerate}
+    \item \textbf{Un Tablero Kanban:} para ver en qué está trabajando cada integrante en el día a día (\textit{Por hacer}, \textit{En progreso}, \textit{Necesito ayuda}, \textit{Completado}).
+    \item \textbf{Un Diagrama de Gantt:} para visualizar el calendario de fechas, plazos de entrega y saber con anticipación si una tarea se está retrasando antes del día final.
+\end{enumerate}
+
+Además, la aplicación ayuda al grupo a establecer reglas claras desde el inicio (acuerdo de equipo) y genera al final un resumen transparente de los aportes de cada integrante.
+
+\section{El problema real que queremos resolver}
+
+\subsection{Lo que ocurre en la práctica}
+El desorden en los trabajos grupales no es una percepción aislada; diversos estudios recientes lo confirman con datos:
+\begin{itemize}
+    \item \textbf{Saturación de mensajes:} El 100\% de los estudiantes reporta que los grupos de chat se llenan de mensajes desordenados donde es fácil perder datos o acuerdos importantes (Vilches y Reche, 2019; Akram et al., 2024).
+    \item \textbf{Confusión en los roles:} El 76\% manifiesta dudas sobre qué tarea le corresponde exactamente a cada integrante.
+    \item \textbf{Entregas de último minuto:} El 64\% reconoce haber omitido fechas límite de entrega por falta de seguimiento a tiempo.
+\end{itemize}
+
+\subsection{Impacto social del proyecto}
+Aunque empezamos pensando en nuestras clases de la universidad (UNSA), este problema ocurre en muchos otros espacios:
+\begin{itemize}
+    \item \textbf{En la universidad e institutos:} Ayuda a que los estudiantes no se sobrecarguen, reduciendo las discusiones y el estrés de fin de semestre.
+    \item \textbf{En semilleros y grupos de investigación:} Facilita que estudiantes de distintas carreras puedan coordinar proyectos juntos sin perder tiempo configurando herramientas complicadas.
+    \item \textbf{En equipos de trabajo juvenil:} Fomenta una cultura de trabajo responsable, transparente y con un reparto justo de tareas.
+\end{itemize}
+
+\section{Objetivos del proyecto}
+
+\subsection{Objetivo General}
+Construir un prototipo de sistema web que ayude a equipos de trabajo a organizarse mejor mediante tableros Kanban y calendarios tipo Gantt, evitando retrasos y haciendo transparente el trabajo de cada integrante.
+
+\subsection{Objetivos Específicos}
+\begin{itemize}
+    \item \textbf{OE1:} Identificar los problemas más frecuentes al coordinar trabajos grupales y definir las funciones que realmente necesita un equipo.
+    \item \textbf{OE2:} Diseñar una interfaz limpia y estructurar los datos del sistema para sincronizar el tablero Kanban con el cronograma Gantt.
+    \item \textbf{OE3:} Programar el prototipo web usando tecnologías modernas y ligeras (FastAPI en Python para el servidor, y HTML con Tailwind CSS para la interfaz).
+    \item \textbf{OE4:} Probar la aplicación con compañeros de estudio mediante pruebas prácticas y una encuesta estándar de usabilidad (SUS) para confirmar que sea fácil de usar.
+\end{itemize}
+
+\section{¿Cómo funciona la aplicación?}
+
+El trabajo de un equipo dentro del sistema sigue un camino claro de \textbf{15 pasos organizados en tres etapas}:
+
+\subsection{Etapa 1: Planificación (Pasos 1 al 8)}
+\begin{enumerate}
+    \item \textbf{Inicio:} Se inicia la sesión en la plataforma.
+    \item \textbf{Proyecto:} Se registra el título y la meta general del trabajo.
+    \item \textbf{Integrantes:} Se agregan los miembros del equipo.
+    \item \textbf{Acuerdo y objetivos:} El grupo define sus normas básicas de trabajo y objetivos.
+    \item \textbf{División de tareas:} Se descompone el trabajo en tareas puntuales.
+    \item \textbf{Responsables:} Se asigna quién o quiénes se harán cargo de cada tarea.
+    \item \textbf{Plazos:} Se definen las fechas de inicio y entrega para cada actividad.
+    \item \textbf{Organización:} Las tareas se ordenan en el tablero Kanban y en el calendario Gantt.
+\end{enumerate}
+
+\subsection{Etapa 2: Ejecución y Seguimiento (Pasos 9 al 11)}
+\begin{enumerate}
+    \setcounter{enumi}{8}
+    \item \textbf{Ejecución:} Cada integrante avanza sus tareas de forma independiente.
+    \item \textbf{Registro de avances:} Cada miembro actualiza su porcentaje de progreso (0\% a 100\%).
+    \item \textbf{Revisión continua:} Todo el equipo ve el avance general. Si alguien se traba, puede activar la opción \textbf{``Necesito ayuda''} para que sus compañeros lo apoyen a tiempo.
+\end{enumerate}
+
+\subsection{Etapa 3: Control y Cierre (Pasos 12 al 15)}
+\begin{enumerate}
+    \setcounter{enumi}{11}
+    \item \textbf{Detección de retrasos:} Si una tarea supera su fecha límite sin completarse, el sistema la resalta en rojo en el calendario Gantt.
+    \item \textbf{Reorganización:} El equipo puede reasignar tareas o ajustar fechas si surgen imprevistos.
+    \item \textbf{Revisión final:} Se comprueba que todos los entregables estén listos.
+    \item \textbf{Finalización y reporte:} Se cierra el proyecto y el sistema genera un resumen claro de los aportes y tareas completadas por cada integrante.
+\end{enumerate}
+
+\section{¿En qué se diferencia de otras herramientas?}
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Comparativa sencilla frente a soluciones actuales}
+\begin{tabularx}{\textwidth}{l p{4.2cm} X}
+\toprule
+\textbf{Herramienta} & \textbf{Lo que hace bien} & \textbf{Lo que le falta para equipos de estudio} \\
+\midrule
+\textbf{WhatsApp} & Rápido y todos lo tienen en el celular. & Mensajes desordenados, tareas que se olvidan y no hay evidencia de quién trabajó. \\
+\textbf{Trello / Asana} & Muy completas para empresas. & Demasiadas opciones que confunden y requieren mucha configuración para trabajos cortos. \\
+\textbf{Google Docs} & Excelente para escribir juntos. & Solo sirve para redactar el documento final, no para coordinar la investigación ni los plazos. \\
+\midrule
+\textbf{Nuestra Solución} & \textbf{Simple, visual y pensada para estudiantes.} & \textbf{Une Kanban + Gantt, incluye botón de ayuda, acuerdo inicial y reporte de aportes.} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Tecnologías que estamos utilizando}
+Para que el sistema sea rápido, liviano y fácil de abrir desde cualquier navegador, elegimos:
+\begin{itemize}
+    \item \textbf{Python y FastAPI:} Para el servidor web. Es rápido, moderno y maneja las peticiones de datos de forma limpia y segura.
+    \item \textbf{HTML5 y Tailwind CSS:} Para una interfaz limpia, bonita y adaptable tanto a pantallas de computadora como a celulares.
+    \item \textbf{JavaScript estándar:} Para que el tablero Kanban y el calendario Gantt se muevan de forma fluida sin recargar la página.
+    \item \textbf{Git y GitHub:} Para trabajar en equipo sobre el mismo código sin pisar el trabajo de los demás.
+\end{itemize}
+
+\section{Plan de trabajo y responsabilidades}
+
+\subsection{Cronograma de avance (Sprints)}
+\begin{itemize}
+    \item \textbf{Sprint 1 (Completado):} Diagnóstico del problema, revisión de antecedentes y justificación del proyecto.
+    \item \textbf{Sprint 2 (Completado):} Definición de la vista dual (Kanban + Gantt), flujo de 15 pasos y redacción de este informe.
+    \item \textbf{Sprint 3 (En curso):} Diseño de pantallas (bocetos de interfaz) y estructura de la base de datos.
+    \item \textbf{Sprint 4 (Siguiente paso):} Programación del prototipo funcional en FastAPI y pruebas locales.
+    \item \textbf{Sprint 5 (Final):} Pruebas de usabilidad con estudiantes compañeros y preparación de la presentación para la feria.
+\end{itemize}
+
+\subsection{Tareas asignadas en el equipo}
+\begin{table}[htbp]
+\centering
+\caption{Responsabilidades de los integrantes}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+
+\end{document}

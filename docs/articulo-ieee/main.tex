@@ -1,0 +1,209 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands]{babel}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Sistema de Gestión y Seguimiento de Tareas para Mitigar Retrasos en Trabajos Colaborativos Universitarios}
+
+\author{
+  \begin{tabular}{c@{\hspace{0.9cm}}c@{\hspace{0.9cm}}c}
+    \begin{minipage}[t]{5.3cm}\centering
+      \textbf{Denny Joaquin Mamani Huayhua}\\[0.08cm]
+      \textit{Escuela Profesional de Ingeniería de Sistemas}\\
+      \textit{Universidad Nacional de San Agustín de Arequipa}\\
+      Arequipa, Perú\\
+      \texttt{\small dmamanihuayh@unsa.edu.pe}
+    \end{minipage} &
+    \begin{minipage}[t]{5.3cm}\centering
+      \textbf{Eder Lucio Vicente Medina}\\[0.08cm]
+      \textit{Escuela Profesional de Ingeniería de Sistemas}\\
+      \textit{Universidad Nacional de San Agustín de Arequipa}\\
+      Arequipa, Perú\\
+      \texttt{\small evicentem@unsa.edu.pe}
+    \end{minipage} &
+    \begin{minipage}[t]{5.3cm}\centering
+      \textbf{Marco Antonio Salas Zegarra}\\[0.08cm]
+      \textit{Escuela Profesional de Ingeniería de Sistemas}\\
+      \textit{Universidad Nacional de San Agustín de Arequipa}\\
+      Arequipa, Perú\\
+      \texttt{\small msalasze@unsa.edu.pe}
+    \end{minipage} \\[0.75cm]
+    \begin{minipage}[t]{5.3cm}\centering
+      \textbf{Rodrigo Enrique Neyra Chambilla}\\[0.08cm]
+      \textit{Escuela Profesional de Ingeniería de Sistemas}\\
+      \textit{Universidad Nacional de San Agustín de Arequipa}\\
+      Arequipa, Perú\\
+      \texttt{\small rneyra@unsa.edu.pe}
+    \end{minipage} &
+    \begin{minipage}[t]{5.3cm}\centering
+      \textbf{Ronald David Jala Paricanaza}\\[0.08cm]
+      \textit{Escuela Profesional de Ingeniería de Sistemas}\\
+      \textit{Universidad Nacional de San Agustín de Arequipa}\\
+      Arequipa, Perú\\
+      \texttt{\small rjala@unsa.edu.pe}
+    \end{minipage} &
+    \begin{minipage}[t]{5.3cm}\centering
+      \textbf{Mg. William Milton Bornas Rios}\\[0.08cm]
+      \textit{Docente Asesor - EPIS}\\
+      \textit{Universidad Nacional de San Agustín de Arequipa}\\
+      Arequipa, Perú\\
+      \texttt{\small wbornas@unsa.edu.pe}
+    \end{minipage}
+  \end{tabular}
+}
+
+\maketitle
+
+\begin{abstract}
+El desarrollo de trabajos grupales en entornos académicos y formativos enfrenta serias dificultades operativas cuando se emplean canales de mensajería instantánea como WhatsApp, evidenciándose saturación de mensajes en un 100\% de los casos, confusión de roles en un 76\% y retrasos en entregas en más del 64\%. Este artículo propone un sistema web fullstack para la gestión, seguimiento y mitigación de retrasos en proyectos colaborativos. La solución se fundamenta en el paradigma orientado a objetos y en estructuras de datos, articulando un entorno dual que integra Tableros Kanban para la gestión del flujo operativo y Diagramas de Gantt para la planificación temporal y detección temprana de cuellos de botella y alertas de retraso. La metodología sigue un ciclo de prototipado incremental en dos etapas: análisis y modelado funcional, seguido de la implementación modular y evaluación del prototipo. El sistema integra una arquitectura web desacoplada con backend modular en FastAPI y frontend reactivo y ligero. Los resultados preliminares y el diseño estructurado evidencian una reducción significativa en la incertidumbre de roles, alta claridad en la priorización de tareas y una gestión oportuna de los plazos de entrega en beneficio de equipos multidisciplinarios y la comunidad educativa.
+\end{abstract}
+
+\begin{IEEEkeywords}
+aprendizaje colaborativo, estructuras de datos, tableros Kanban, diagrama de Gantt, prototipo web, seguimiento de tareas.
+\end{IEEEkeywords}
+
+\section{Introducción}
+\subsection{Contexto y problemática}
+En el ámbito de la educación superior, técnica y en equipos de investigación y desarrollo, el Aprendizaje Basado en Proyectos (PBL) y el trabajo colaborativo constituyen metodologías formativas esenciales. No obstante, investigaciones empíricas demuestran que el rendimiento de los equipos se fractura cuando no existe una estructuración formal de las actividades ni visibilidad sobre las prioridades y compromisos de trabajo entre pares, originando asimetrías de compromiso, conflictos de prioridad y retrasos no mitigados \cite{hussein2021addressing}. Para coordinar sus proyectos, los equipos recurren a plataformas de comunicación digital; sin embargo, al evaluar la experiencia de los usuarios, se comprueba que los entornos institucionales formales (como Microsoft Teams) suelen percibirse complejos o poco adaptables para proyectos cortos, propiciando que los grupos migren masivamente hacia canales de mensajería social desestructurados \cite{sobaih2021responses}.
+
+En este contexto, la coordinación operativa de los equipos recae predominantemente en WhatsApp. Estudios empíricos en educación superior revelan que la informalidad comunicativa de dicha aplicación propicia la pérdida de información crítica en equipos numerosos ($\mu=4.12/5.00$), genera frecuentes malentendidos y conflictos por instrucciones ambiguas ($\mu=4.16/5.00$), y dificulta alcanzar consensos organizativos virtuales ($\mu=4.10/5.00$) \cite{vilches2019limitaciones}. Como consecuencia directa de esta desorganización, el 100\% de los estudiantes universitarios reconoce experimentar sobrecarga y saturación por mensajes desestructurados, un 76\% manifiesta confusión recurrente respecto a la asignación de roles y un 64\% reporta haber omitido fechas límite de entrega en trabajos grupales \cite{akram2024gams}.
+
+Esta problemática trasciende el aula y se manifiesta en semilleros de investigación, proyectos multidisciplinarios, iniciativas de innovación y equipos de trabajo colaborativo que cursan múltiples entregas simultáneas. La falta de trazabilidad ocasiona entregas precipitadas de último minuto, desbalance en la carga laboral del equipo, fricciones interpersonales y estrés. En este escenario, el problema radica en la ausencia de una herramienta formal, intuitiva y accesible que gestione el flujo secuencial de actividades, visualice los plazos y estados de avance, y alerte oportunamente sobre retrasos y cuellos de botella en los proyectos colaborativos.
+
+\subsection{Justificación}
+El desarrollo del presente proyecto es necesario y valioso debido a que proporciona un entorno centralizado que sustituye la informalidad comunicativa por trazabilidad, equidad y control de avance. Frente a la dispersión actual, la solución articula tres dimensiones fundamentales del trabajo colaborativo: la organización técnica de la tarea (tableros Kanban interactivos y cronogramas temporales tipo Gantt), la regulación formal de la participación (acuerdos iniciales de equipo, asignación de roles y reporte de aportes) y la cohesión grupal (mecanismos de apoyo oportuno ante bloqueos y reconocimientos mutuos).
+
+\textbf{Responsabilidad social:} El impacto del proyecto no se restringe a una asignatura específica, sino que se proyecta hacia la comunidad académica universitaria, la formación técnica y los equipos multidisciplinarios en la sociedad. La herramienta promueve la justicia y transparencia en el reparto de tareas, reduce el desgaste relacional y mitiga el estrés académico y laboral originado por la descoordinación en entregas grupales, fortaleciendo competencias formativas de responsabilidad compartida y productividad en equipo.
+
+\textbf{Innovación:} La diferenciación técnica de la propuesta radica en la integración sinérgica de un entorno dual: Tableros Kanban para el control ágil de estados y límites de trabajo en progreso ($WIP$), y un cronograma dinámico basado en Diagramas de Gantt para la visualización de plazos, cálculo de desviaciones temporales y detección automática de cuellos de botella.
+
+\subsection{Objetivos}
+\textbf{Objetivo general:} Desarrollar un prototipo de sistema web fullstack para la gestión y seguimiento de actividades colaborativas mediante tableros Kanban y cronogramas tipo Gantt, que permita mitigar retrasos y optimizar la coordinación en equipos multidisciplinarios y formativos.
+
+\begin{itemize}
+    \item \textbf{OE1:} Analizar los requisitos funcionales del flujo de trabajo colaborativo mediante técnicas de elicitación y caracterización de problemas de coordinación.
+    \item \textbf{OE2:} Diseñar el modelo funcional, la arquitectura modular y las estructuras de datos (listas y colas de prioridad) para el soporte del tablero Kanban y el cronograma tipo Gantt.
+    \item \textbf{OE3:} Implementar un prototipo funcional fullstack empleando una API modular en FastAPI (Python) y una interfaz web reactiva y ligera.
+    \item \textbf{OE4:} Evaluar el funcionamiento, la respuesta algorítmica y la usabilidad del prototipo mediante casos de prueba formales y la escala estandarizada System Usability Scale (SUS).
+\end{itemize}
+
+\subsection{Alcance y limitaciones}
+El prototipo abarca un ciclo operativo integral de 15 actividades estructurado en tres macrofases funcionales:
+\begin{enumerate}
+    \item \textbf{Planificación (Actividades 1--8):} Comprende el inicio formal, creación del proyecto, registro de integrantes, definición de acuerdos y objetivos, división de actividades, asignación de responsabilidades, establecimiento de plazos y organización en el tablero Kanban y cronograma Gantt, admitiendo una configuración interactiva y concurrente de los parámetros de trabajo.
+    \item \textbf{Ejecución y seguimiento (Actividades 9--11):} Abarca la ejecución asíncrona de tareas individuales, el registro de avances porcentuales y la revisión continua del progreso mediante columnas de estado, incorporando alertas y solicitud de apoyo ante dificultades.
+    \item \textbf{Control y cierre (Actividades 12--15):} Incluye la evaluación algorítmica de retrasos y cuellos de botella en el cronograma, la reorganización dinámica de plazos y tareas comprometidas, la revisión final de entregables y la finalización formal con generación del reporte de aportes individuales.
+\end{enumerate}
+El sistema está dirigido a coordinadores de equipo y miembros colaboradores. Quedan fuera del alcance del proyecto la implementación de salas de videoconferencia y la sincronización con plataformas de mensajería comercial externa. Como limitaciones, se reconoce la ejecución inicial en entornos de prueba locales y la validación con una muestra piloto representativa de equipos de trabajo.
+
+El artículo se organiza de la siguiente manera: la Sección II expone el estado del arte y el análisis comparativo de la literatura; la Sección III describe la metodología adoptada; la Sección IV detalla el análisis y modelamiento funcional con estructuras de datos; la Sección V presenta el desarrollo del prototipo; la Sección VI resume las pruebas y resultados; la Sección VII discute los hallazgos; y la Sección VIII presenta las conclusiones y líneas de trabajo futuro.
+
+\section{Estado del Arte}
+\subsection{Marco conceptual}
+El trabajo colaborativo mediado por tecnologías educativas requiere estructuración de roles y sincronización de entregables para evitar fallas organizativas \cite{hussein2021addressing, sobaih2021responses}. Para mitigar el desorden derivado de canales informales \cite{vilches2019limitaciones}, la literatura ha explorado Sistemas de Información Gerencial (MIS) adaptados a la docencia que centralizan cronogramas y roles \cite{akram2024gams}. Asimismo, se han desarrollado herramientas de administración de actividades enfocadas en la priorización de plazos para estudiantes individuales \cite{nurzi2022task}, así como Sistemas de Soporte a Decisiones Grupales (GDSS) orientados a automatizar la planificación académica y reducir el error humano frente a registros manuales \cite{siddiqui2018gdss}.
+
+Para medir la aceptación y efectividad de estos sistemas de software, la literatura de interacción humano-computador adopta el System Usability Scale (SUS) como instrumento estandarizado y robusto de evaluación de usabilidad \cite{brooke1996sus}. Por otra parte, desde la perspectiva algorítmica y de estructuras de datos, la gestión ágil fundamenta el uso de Tableros Kanban para limitar el trabajo en progreso ($WIP$) y optimizar el flujo de tareas, combinados con Diagramas de Gantt para la representación temporal de plazos y fechas límite. Sobre estas estructuras, el monitoreo dinámico permite detectar cuellos de botella en columnas críticas y emitir alertas preventivas cuando una actividad supera su fecha estimada de entrega.
+
+\subsection{Trabajos relacionados}
+La revisión sistemática de la literatura académica reciente evidencia diversas aproximaciones para atender la gestión de proyectos en la educación superior:
+\begin{itemize}
+    \item Hussein \cite{hussein2021addressing} analizó los factores determinantes del fracaso en proyectos de ingeniería colaborativos mediante 67 reportes de reflexión estudiantil, identificando que la ambigüedad en la asignación de roles y los conflictos de prioridad son las causas raíz del bajo rendimiento, recomendando la estructuración formal del flujo de trabajo.
+    \item Sobaih et al. \cite{sobaih2021responses} evaluaron la experiencia de aprendizaje comparando plataformas institucionales formales (Microsoft Teams) con redes sociales, demostrando que las herramientas corporativas presentan curvas de aprendizaje elevadas y redundancia funcional que desincentivan la adopción rápida en grupos universitarios.
+    \item Vilches Vilela y Reche Urbano \cite{vilches2019limitaciones} condujeron un estudio empírico cuantitativo con 1709 universitarios, demostrando que el uso de WhatsApp como canal primario de coordinación propicia dispersión informativa, pérdida de archivos clave ($\mu=4.12/5.00$) y tensiones interpersonales por instrucciones ambiguas ($\mu=4.16/5.00$). Su valor radica en el diagnóstico cuantitativo, careciendo de una propuesta de software.
+    \item Akram et al. \cite{akram2024gams} desarrollaron GAMS, un sistema web en PHP y MySQL con perfiles para administradores, líderes y miembros, incorporando recordatorios vía SMS y alcanzando un puntaje SUS de 70.44. Sin embargo, su arquitectura gestiona tareas como registros tabulares independientes, sin mecanismos visuales e interactivos de flujo ágil de trabajo.
+    \item Nurzi y Ab Wahab \cite{nurzi2022task} presentaron un sistema web de seguimiento de tareas estudiantiles centrado en la priorización por fecha de vencimiento. Aunque mitiga olvidos individuales, el sistema fue concebido para uso monousuario, omitiendo la coordinación colaborativa y la interdependencia entre compañeros.
+    \item Siddiqui et al. \cite{siddiqui2018gdss} implementaron un sistema de soporte a decisiones grupales para la planificación de periodos académicos, validando que los flujos automatizados en bases de datos eliminan errores de coordinación y reducen tiempos de gestión frente a hojas de cálculo manuales; no obstante, su alcance está orientado al nivel macro administrativo.
+\end{itemize}
+
+\subsection{Análisis comparativo}
+En la Tabla~\ref{tab:comparativa} se sintetizan las características, aportes y limitaciones de las soluciones identificadas en la literatura frente a la presente propuesta.
+
+\begin{table}[htbp]
+\caption{Comparación de Soluciones en el Estado del Arte}
+\label{tab:comparativa}
+\centering
+\begin{tabular}{p{1.4cm}p{1.7cm}p{2.3cm}p{1.7cm}}
+\toprule
+\textbf{Referencia} & \textbf{Enfoque / Tech} & \textbf{Aporte Principal} & \textbf{Limitación} \\
+\midrule
+Hussein \cite{hussein2021addressing} & Cualitativo (PBL) & Diagnóstico de causas de fricción en ingeniería & Enfoque formativo sin software \\
+Sobaih et al. \cite{sobaih2021responses} & Entornos formales & Comparativa Teams vs. redes sociales & Complejidad y baja adaptabilidad \\
+Vilches et al. \cite{vilches2019limitaciones} & Empírico (1709 alumnos) & Evidencia estadística de fallas en mensajería & Diagnóstico sin artefacto técnico \\
+Akram et al. \cite{akram2024gams} & Web PHP / MySQL & Roles y notificaciones SMS & Tareas planas sin flujo visual \\
+Nurzi et al. \cite{nurzi2022task} & Web / Base de datos & Priorización temporal de tareas & Solo monousuario (individual) \\
+Siddiqui et al. \cite{siddiqui2018gdss} & Soporte a decisiones (DSS) & Automatización de calendarización académica & Orientado al nivel macro administrativo \\
+\midrule
+\textbf{Propuesta} & \textbf{Fullstack (FastAPI + Web)} & \textbf{Flujo de 15 actividades, vista dual Kanban + Gantt, roles y detección de retrasos} & \textbf{Evaluación inicial en muestra piloto} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Brecha identificada y aporte de la propuesta}
+A partir del análisis comparativo se constata una marcada brecha en el estado del arte: las herramientas empleadas en la actualidad se polarizan entre canales de mensajería desestructurados que propician saturación comunicativa \cite{vilches2019limitaciones}, suites corporativas de alta complejidad que dificultan la adopción en proyectos breves \cite{sobaih2021responses}, o sistemas que gestionan actividades como registros planos y aislados \cite{akram2024gams, nurzi2022task}. Como demostró Hussein \cite{hussein2021addressing}, la desarticulación en las prioridades de entrega vulnera la efectividad de los equipos. Ninguna de las soluciones revisadas integra un flujo formal orientado al trabajo colaborativo (las 15 actividades de coordinación) con una arquitectura dual que vincule tableros Kanban para el flujo operativo diario con diagramas de Gantt interactivos capaces de alertar tempranamente cuellos de botella y desviaciones de cronograma. La presente propuesta cubre esta necesidad articulando un modelado funcional riguroso con estructuras de datos en una arquitectura fullstack ligera y escalable.
+
+\section{Metodología}
+\subsection{Enfoque metodológico}
+Para el desarrollo de la investigación y la construcción del artefacto tecnológico se adopta un enfoque de \textbf{Prototipado Incremental y Evolutivo}, correspondiente a proyectos de ingeniería de sistemas en etapas tempranas de formación (Categoría I). Este marco metodológico permite abordar de manera iterativa el modelado de estructuras de datos y componentes visuales, facilitando ciclos continuos de refinamiento funcional a partir de la verificación de requisitos y la retroalimentación de casos de uso representativos del trabajo en equipo.
+
+\subsection{Fases y actividades}
+El proceso metodológico articula dos dimensiones complementarias: las etapas de ingeniería de desarrollo de software y el ciclo operativo del flujo de usuario dentro de la herramienta.
+
+\textbf{1) Etapas del desarrollo de software:}
+\begin{itemize}
+    \item \textbf{Etapa I (Análisis y Modelado):} Elicitación de requisitos a partir del diagnóstico de fallas comunicativas y de coordinación en equipos; diseño de la arquitectura modular y estructuras de datos (listas enlazadas y colas de prioridad) para el soporte del tablero Kanban y el cronograma tipo Gantt; y especificación de reglas de detección de retrasos.
+    \item \textbf{Etapa II (Construcción y Evaluación):} Codificación modular de la API en FastAPI (Python), desarrollo de la interfaz visual reactiva con vistas sincronizadas Kanban y Gantt, ejecución de pruebas de consistencia operativa y validación empírica de usabilidad mediante el estándar System Usability Scale (SUS) \cite{brooke1996sus}.
+\end{itemize}
+
+\textbf{2) Ciclo operativo del flujo de usuario (15 actividades):}
+El sistema materializa el ciclo colaborativo estructurado en tres macrofases funcionales:
+\begin{itemize}
+    \item \textbf{Fase 1: Planificación (Actividades 1 a 8):} Inicio formal del proyecto (1), creación del espacio de trabajo (2), registro de integrantes (3), definición de acuerdos y objetivos compartidos (4), división estructurada de tareas (5), asignación de responsables (6), establecimiento de fechas límite (7) y organización en el tablero Kanban y cronograma Gantt (8). El sistema admite la configuración interactiva y concurrente de los parámetros temporales antes del arranque operativo.
+    \item \textbf{Fase 2: Ejecución y seguimiento (Actividades 9 a 11):} Ejecución asíncrona de las tareas individuales (9), actualización periódica de avances porcentuales en el tablero Kanban (10) y revisión continua del progreso (11), incorporando mecanismos de alerta proactiva y activación del estado de apoyo ante bloqueos operativos.
+    \item \textbf{Fase 3: Control y cierre (Actividades 12 a 15):} Evaluación algorítmica de retrasos y cuellos de botella temporales en el Gantt (12), reorganización dinámica de plazos y reasignación de actividades críticas (13), revisión y validación final de entregables consolidados (14) y finalización formal del proyecto con generación automatizada del reporte de aportes individuales (15).
+\end{itemize}
+
+\subsection{Herramientas de apoyo}
+Para soportar las diferentes actividades del ciclo de vida del proyecto se seleccionaron herramientas estándar en la industria y la academia:
+\begin{itemize}
+    \item \textbf{Gestión de código y colaboración:} Git y la plataforma GitHub para el control de versiones distribuido, seguimiento de modificaciones y preservación de trazabilidad en el desarrollo.
+    \item \textbf{Entorno de desarrollo y modelado:} Visual Studio Code como editor de código fuente integrado y Draw.io para la elaboración de la arquitectura conceptual, diagramas UML de clases y flujogramas del sistema.
+    \item \textbf{Plataforma tecnológica del prototipo:} Entorno de ejecución Python 3.11+ con el framework asíncrono FastAPI y servidor ASGI Uvicorn para los microservicios backend; junto a HTML5, Tailwind CSS y JavaScript estándar para el renderizado reactivo del frontend con sincronización entre tablero Kanban y cronograma Gantt.
+\end{itemize}
+
+\section{Análisis y Modelamiento Funcional}
+\subsection{Requisitos}
+\subsection{Modelo funcional}
+\subsection{Diseño de la solución}
+
+\section{Desarrollo del Prototipo}
+\subsection{Tecnologías y herramientas}
+\subsection{Implementación}
+\subsection{Repositorio y demostración}
+
+\section{Pruebas y Resultados}
+\subsection{Casos de prueba}
+\subsection{Resultados obtenidos}
+
+\section{Discusión}
+
+\section{Conclusiones y Trabajo Futuro}
+
+\section*{Agradecimiento}
+
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}

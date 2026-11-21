@@ -1,0 +1,24 @@
+# LaTeX temporales y auxiliares
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Python y entornos virtuales
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+
+# Archivos de sistema y editores
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
