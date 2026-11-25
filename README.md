@@ -28,7 +28,13 @@ El directorio está organizado en la documentación completa de lo realizado y l
 ```text
 sistema-colaborativo-unsa/
 │
+├── AGENTS.md                                    # Reglas de trabajo y flujo SDD para agentes
 ├── README.md                                    # Ficha formal del proyecto e integrantes
+│
+├── specs/                                       # Constitución y especificaciones (SDD)
+│   ├── mission.md                               # Propósito, alcance y reglas del producto
+│   ├── tech-stack.md                            # Stack, arquitectura y convenciones
+│   └── roadmap.md                               # Backlog de historias de usuario por fases
 │
 ├── docs/                                        # Documentación completa y entregables
 │   ├── articulo-ieee/                           # Artículo de 3 páginas en formato IEEE
@@ -46,12 +52,19 @@ sistema-colaborativo-unsa/
 │       └── informe_avance.md                    # Versión Markdown para vista rápida
 │
 ├── sistema/                                     # Carpeta donde se desarrollará el software
-│   ├── backend/                                 # (Espacio reservado para el servidor FastAPI)
-│   └── frontend/                                # (Espacio reservado para la interfaz web)
+│   └── frontend/                                # Aplicación web (React + TypeScript + Tailwind + Supabase)
 │
 └── presentacion/                                # Material de exposición para la feria
     └── presentacion_feria_2026.pptx             # Diapositivas oficiales
 ```
+
+---
+
+## 🛠️ Stack Tecnológico
+
+- **Frontend:** React con TypeScript y Tailwind CSS (diseño adaptable a escritorio y celular).
+- **Backend y Base de Datos:** Supabase (PostgreSQL, autenticación con Google y Row-Level Security).
+- **Lógica de Dominio:** Módulo independiente de la interfaz y de la base de datos (precedencia, bloqueo automático, ruta crítica y alertas), con pruebas unitarias.
 
 ---
 
