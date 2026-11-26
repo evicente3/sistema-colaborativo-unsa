@@ -16,7 +16,7 @@
 
 \begin{document}
 
-\title{Sistema de Gestión y Seguimiento de Tareas para Mitigar Retrasos en Trabajos Colaborativos Universitarios}
+\title{Sistema de Gestión y Seguimiento de Tareas para Mitigar Retrasos en Trabajos Colaborativos}
 
 \author{
   \begin{tabular}{c@{\hspace{0.9cm}}c@{\hspace{0.9cm}}c}
@@ -84,30 +84,63 @@ En este contexto, la coordinación operativa de los equipos recae predominanteme
 Esta problemática trasciende el aula y se manifiesta en semilleros de investigación, proyectos multidisciplinarios, iniciativas de innovación y equipos de trabajo colaborativo que cursan múltiples entregas simultáneas. La falta de trazabilidad ocasiona entregas precipitadas de último minuto, desbalance en la carga laboral del equipo, fricciones interpersonales y estrés. En este escenario, el problema radica en la ausencia de una herramienta formal, intuitiva y accesible que gestione el flujo secuencial de actividades, visualice los plazos y estados de avance, y alerte oportunamente sobre retrasos y cuellos de botella en los proyectos colaborativos.
 
 \subsection{Justificación}
-El desarrollo del presente proyecto es necesario y valioso debido a que proporciona un entorno centralizado que sustituye la informalidad comunicativa por trazabilidad, equidad y control de avance. Frente a la dispersión actual, la solución articula tres dimensiones fundamentales del trabajo colaborativo: la organización técnica de la tarea (tableros Kanban interactivos y cronogramas temporales tipo Gantt), la regulación formal de la participación (acuerdos iniciales de equipo, asignación de roles y reporte de aportes) y la cohesión grupal (mecanismos de apoyo oportuno ante bloqueos y reconocimientos mutuos).
+La coordinación del trabajo colaborativo se debilita cuando carece de una estructura formal y de visibilidad sobre las prioridades y los compromisos de cada integrante, lo que genera ambigüedad de roles, conflictos de prioridad y retrasos no mitigados \cite{hussein2021addressing}. Cuando además la coordinación se apoya en canales de mensajería informal, la información crítica se dispersa y se pierde, y las instrucciones ambiguas producen malentendidos \cite{vilches2019limitaciones}. Aunque la evidencia disponible proviene del ámbito universitario, la misma dinámica es previsible en cualquier grupo pequeño que comparte un objetivo y coordina sus actividades por canales no estructurados, como equipos de voluntariado, de organización de eventos, de emprendimiento o de trabajo profesional. Esta extensión se plantea como hipótesis de diseño y solo se contrasta parcialmente en el piloto de este trabajo.
 
-\textbf{Responsabilidad social:} El impacto del proyecto no se restringe a una asignatura específica, sino que se proyecta hacia la comunidad académica universitaria, la formación técnica y los equipos multidisciplinarios en la sociedad. La herramienta promueve la justicia y transparencia en el reparto de tareas, reduce el desgaste relacional y mitiga el estrés académico y laboral originado por la descoordinación en entregas grupales, fortaleciendo competencias formativas de responsabilidad compartida y productividad en equipo.
+El proyecto es necesario porque ofrece un espacio centralizado y simple donde cada tarea tiene responsable, plazo y dependencias, y donde el sistema advierte oportunamente cuando un retraso puede afectar al resto del trabajo. Con ello sustituye la informalidad comunicativa por trazabilidad, claridad de responsabilidades y control del avance.
 
-\textbf{Innovación:} La diferenciación técnica de la propuesta radica en la integración sinérgica de un entorno dual: Tableros Kanban para el control ágil de estados y límites de trabajo en progreso ($WIP$), y un cronograma dinámico basado en Diagramas de Gantt para la visualización de plazos, cálculo de desviaciones temporales y detección automática de cuellos de botella.
+\textbf{Responsabilidad social.} La herramienta promueve la transparencia y la equidad en el reparto de la carga de trabajo, reduce el desgaste relacional y el estrés que provoca la descoordinación, y fortalece competencias de responsabilidad compartida. Su uso no depende de conocimientos técnicos ni de costos, por lo que puede beneficiar a grupos con recursos limitados.
+
+\textbf{Innovación.} La propuesta integra el tablero Kanban con la precedencia entre tareas: una tarea cuyas predecesoras no han terminado se marca como bloqueada, y las alertas de retraso se calculan según su impacto sobre las tareas que dependen de ella. Todo ello en una aplicación web de arranque guiado, adaptable a distintos tamaños de pantalla, incluido el celular.
 
 \subsection{Objetivos}
-\textbf{Objetivo general:} Desarrollar un prototipo de sistema web fullstack para la gestión y seguimiento de actividades colaborativas mediante tableros Kanban y cronogramas tipo Gantt, que permita mitigar retrasos y optimizar la coordinación en equipos multidisciplinarios y formativos.
+\textbf{Objetivo general.} Desarrollar y evaluar, hasta el 7 de diciembre de 2026, un prototipo de aplicación web de uso general, adaptable a pantallas de celular y de escritorio, para la gestión y el seguimiento del trabajo colaborativo, que combine un tablero Kanban con dependencias entre tareas y alertas de retraso, a fin de mitigar retrasos y confusión de responsabilidades en grupos de personas.
 
+\textbf{Objetivos específicos.}
 \begin{itemize}
-    \item \textbf{OE1:} Analizar los requisitos funcionales del flujo de trabajo colaborativo mediante técnicas de elicitación y caracterización de problemas de coordinación.
-    \item \textbf{OE2:} Diseñar el modelo funcional, la arquitectura modular y las estructuras de datos (listas y colas de prioridad) para el soporte del tablero Kanban y el cronograma tipo Gantt.
-    \item \textbf{OE3:} Implementar un prototipo funcional fullstack empleando una API modular en FastAPI (Python) y una interfaz web reactiva y ligera.
-    \item \textbf{OE4:} Evaluar el funcionamiento, la respuesta algorítmica y la usabilidad del prototipo mediante casos de prueba formales y la escala estandarizada System Usability Scale (SUS).
+    \item \textbf{OE1.} Analizar los requisitos funcionales del trabajo colaborativo y elaborar su modelo funcional (casos de uso, flujo de actividades, modelo de datos y reglas de bloqueo y alertas) durante la Etapa~I.
+    \item \textbf{OE2.} Diseñar la arquitectura del sistema (React y Supabase) y el módulo de lógica de dominio que calcula el estado de las tareas y las alertas durante la Etapa~I.
+    \item \textbf{OE3.} Implementar, durante la Etapa~II, un prototipo funcional con el alcance delimitado en la Sección~\ref{sec:alcance}.
+    \item \textbf{OE4.} Evaluar, al cierre de la Etapa~II, el funcionamiento y la usabilidad del prototipo mediante casos de prueba y la escala System Usability Scale (SUS) con al menos 10 usuarios, y contrastar el puntaje obtenido con el valor de referencia de 68 puntos.
 \end{itemize}
 
 \subsection{Alcance y limitaciones}
-El prototipo abarca un ciclo operativo integral de 15 actividades estructurado en tres macrofases funcionales:
-\begin{enumerate}
-    \item \textbf{Planificación (Actividades 1--8):} Comprende el inicio formal, creación del proyecto, registro de integrantes, definición de acuerdos y objetivos, división de actividades, asignación de responsabilidades, establecimiento de plazos y organización en el tablero Kanban y cronograma Gantt, admitiendo una configuración interactiva y concurrente de los parámetros de trabajo.
-    \item \textbf{Ejecución y seguimiento (Actividades 9--11):} Abarca la ejecución asíncrona de tareas individuales, el registro de avances porcentuales y la revisión continua del progreso mediante columnas de estado, incorporando alertas y solicitud de apoyo ante dificultades.
-    \item \textbf{Control y cierre (Actividades 12--15):} Incluye la evaluación algorítmica de retrasos y cuellos de botella en el cronograma, la reorganización dinámica de plazos y tareas comprometidas, la revisión final de entregables y la finalización formal con generación del reporte de aportes individuales.
-\end{enumerate}
-El sistema está dirigido a coordinadores de equipo y miembros colaboradores. Quedan fuera del alcance del proyecto la implementación de salas de videoconferencia y la sincronización con plataformas de mensajería comercial externa. Como limitaciones, se reconoce la ejecución inicial en entornos de prueba locales y la validación con una muestra piloto representativa de equipos de trabajo.
+\label{sec:alcance}
+\textbf{Delimitación.} El prototipo incluye:
+\begin{itemize}
+    \item acceso con cuenta de Google, creación de proyectos y unión mediante código o enlace de invitación;
+    \item tareas con responsable, plazo, estado y precedencia entre tareas;
+    \item tablero Kanban usable en pantalla de celular, con bloqueo automático de tareas según sus predecesoras;
+    \item alertas de retraso calculadas al ingresar y mostradas dentro de la aplicación;
+    \item notas de estado al solicitar apoyo o modificar un plazo;
+    \item un cronograma resumido de solo lectura para las tareas con precedencia, en caso de que el tiempo lo permita.
+\end{itemize}
+
+Quedan fuera del alcance: mensajería o comentarios libres, archivos adjuntos, notificaciones externas o programadas, videoconferencia, integración con plataformas de mensajería, aplicación móvil nativa y funciones específicas de un dominio profesional particular.
+
+\textbf{Plan del proyecto.} El proyecto se organiza en dos etapas, cuyas actividades y plazos se resumen en el Cuadro~\ref{tab:plan_proyecto}.
+
+\begin{table}[htbp]
+\caption{Plan de Actividades y Plazos del Proyecto}
+\label{tab:plan_proyecto}
+\centering
+\begin{tabular}{cp{4.4cm}p{2.3cm}}
+\toprule
+\textbf{Etapa} & \textbf{Actividad} & \textbf{Plazo} \\
+\midrule
+I & Diagnóstico del problema y revisión de literatura & Octubre 2026 \\
+I & Definición de la propuesta y retroalimentación del docente & Octubre--noviembre 2026 \\
+I & Replanteamiento hacia un uso general & Noviembre 2026 \\
+I & Requisitos, modelo funcional y arquitectura & 25--26 de noviembre \\
+II & Implementación del prototipo & 27 de noviembre--3 de diciembre \\
+II & Pruebas y evaluación con usuarios (SUS) & 4--5 de diciembre \\
+II & Análisis de resultados, redacción final y entrega & 5--7 de diciembre \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Recursos.} El equipo está conformado por cinco integrantes y un docente asesor, con la siguiente distribución de responsabilidades: desarrollo del prototipo (interfaz, integración con Supabase y lógica de dominio), modelado funcional y de datos, diseño de la interfaz, pruebas y evaluación de usabilidad, y documentación y redacción del artículo. Se emplean Git y GitHub para el control de versiones, React con TypeScript para la interfaz, Supabase como backend y base de datos, Draw.io para el modelado, y agentes de inteligencia artificial bajo un proceso de desarrollo guiado por especificaciones.
+
+\textbf{Limitaciones.} La validación se realiza con una muestra piloto pequeña y en un periodo corto, por lo que los resultados son exploratorios y no permiten afirmar un efecto estadístico sobre la reducción de retrasos. La aplicabilidad a dominios distintos del educativo se plantea como hipótesis de diseño y no se evalúa de forma separada. El prototipo prioriza el funcionamiento esencial y deja para trabajos futuros las funciones excluidas en la delimitación.
 
 El artículo se organiza de la siguiente manera: la Sección II expone el estado del arte y el análisis comparativo de la literatura; la Sección III describe la metodología adoptada; la Sección IV detalla el análisis y modelamiento funcional con estructuras de datos; la Sección V presenta el desarrollo del prototipo; la Sección VI resume las pruebas y resultados; la Sección VII discute los hallazgos; y la Sección VIII presenta las conclusiones y líneas de trabajo futuro.
 
@@ -159,33 +192,56 @@ A partir del análisis comparativo se constata una marcada brecha en el estado d
 Para el desarrollo de la investigación y la construcción del artefacto tecnológico se adopta un enfoque de \textbf{Prototipado Incremental y Evolutivo}, correspondiente a proyectos de ingeniería de sistemas en etapas tempranas de formación (Categoría I). Este marco metodológico permite abordar de manera iterativa el modelado de estructuras de datos y componentes visuales, facilitando ciclos continuos de refinamiento funcional a partir de la verificación de requisitos y la retroalimentación de casos de uso representativos del trabajo en equipo.
 
 \subsection{Fases y actividades}
-El proceso metodológico articula dos dimensiones complementarias: las etapas de ingeniería de desarrollo de software y el ciclo operativo del flujo de usuario dentro de la herramienta.
+El proceso del proyecto se organiza en dos etapas de ingeniería de software.
 
-\textbf{1) Etapas del desarrollo de software:}
+\textbf{Etapa I: Análisis y modelado.}
 \begin{itemize}
-    \item \textbf{Etapa I (Análisis y Modelado):} Elicitación de requisitos a partir del diagnóstico de fallas comunicativas y de coordinación en equipos; diseño de la arquitectura modular y estructuras de datos (listas enlazadas y colas de prioridad) para el soporte del tablero Kanban y el cronograma tipo Gantt; y especificación de reglas de detección de retrasos.
-    \item \textbf{Etapa II (Construcción y Evaluación):} Codificación modular de la API en FastAPI (Python), desarrollo de la interfaz visual reactiva con vistas sincronizadas Kanban y Gantt, ejecución de pruebas de consistencia operativa y validación empírica de usabilidad mediante el estándar System Usability Scale (SUS) \cite{brooke1996sus}.
+    \item Diagnóstico del problema de coordinación en el trabajo colaborativo y revisión de literatura.
+    \item Definición de la propuesta, retroalimentación del docente y replanteamiento hacia un uso general.
+    \item Elicitación y priorización de requisitos funcionales.
+    \item Elaboración del modelo funcional: actores y casos de uso, flujo de actividades del usuario, modelo de datos y reglas de negocio.
+    \item Diseño de la arquitectura y del módulo de lógica de dominio.
 \end{itemize}
+\textit{Entregables:} requisitos priorizados, modelo funcional y especificación del sistema.
 
-\textbf{2) Ciclo operativo del flujo de usuario (15 actividades):}
-El sistema materializa el ciclo colaborativo estructurado en tres macrofases funcionales:
+\textbf{Etapa II: Construcción y evaluación.}
 \begin{itemize}
-    \item \textbf{Fase 1: Planificación (Actividades 1 a 8):} Inicio formal del proyecto (1), creación del espacio de trabajo (2), registro de integrantes (3), definición de acuerdos y objetivos compartidos (4), división estructurada de tareas (5), asignación de responsables (6), establecimiento de fechas límite (7) y organización en el tablero Kanban y cronograma Gantt (8). El sistema admite la configuración interactiva y concurrente de los parámetros temporales antes del arranque operativo.
-    \item \textbf{Fase 2: Ejecución y seguimiento (Actividades 9 a 11):} Ejecución asíncrona de las tareas individuales (9), actualización periódica de avances porcentuales en el tablero Kanban (10) y revisión continua del progreso (11), incorporando mecanismos de alerta proactiva y activación del estado de apoyo ante bloqueos operativos.
-    \item \textbf{Fase 3: Control y cierre (Actividades 12 a 15):} Evaluación algorítmica de retrasos y cuellos de botella temporales en el Gantt (12), reorganización dinámica de plazos y reasignación de actividades críticas (13), revisión y validación final de entregables consolidados (14) y finalización formal del proyecto con generación automatizada del reporte de aportes individuales (15).
+    \item Implementación incremental del prototipo mediante desarrollo guiado por especificaciones (SDD), con asistencia de agentes de inteligencia artificial.
+    \item Pruebas unitarias de la lógica de dominio y pruebas funcionales de los flujos principales.
+    \item Evaluación de usabilidad con al menos 10 usuarios mediante la escala SUS.
+    \item Análisis de resultados y redacción del artículo.
 \end{itemize}
+\textit{Entregables:} prototipo funcional, resultados de pruebas y de usabilidad, y artículo final.
 
 \subsection{Herramientas de apoyo}
-Para soportar las diferentes actividades del ciclo de vida del proyecto se seleccionaron herramientas estándar en la industria y la academia:
 \begin{itemize}
-    \item \textbf{Gestión de código y colaboración:} Git y la plataforma GitHub para el control de versiones distribuido, seguimiento de modificaciones y preservación de trazabilidad en el desarrollo.
-    \item \textbf{Entorno de desarrollo y modelado:} Visual Studio Code como editor de código fuente integrado y Draw.io para la elaboración de la arquitectura conceptual, diagramas UML de clases y flujogramas del sistema.
-    \item \textbf{Plataforma tecnológica del prototipo:} Entorno de ejecución Python 3.11+ con el framework asíncrono FastAPI y servidor ASGI Uvicorn para los microservicios backend; junto a HTML5, Tailwind CSS y JavaScript estándar para el renderizado reactivo del frontend con sincronización entre tablero Kanban y cronograma Gantt.
+    \item \textbf{Gestión de código y colaboración:} Git y GitHub para el control de versiones y la trazabilidad del desarrollo.
+    \item \textbf{Modelado:} Draw.io para la arquitectura, los diagramas UML y los flujogramas.
+    \item \textbf{Plataforma tecnológica del prototipo:} React con TypeScript para la interfaz web adaptable a celular; Supabase (PostgreSQL, autenticación con Google y reglas de acceso por fila) como backend; y un módulo de lógica de dominio independiente de la interfaz y de la base de datos, que calcula bloqueos, ruta crítica y alertas.
+    \item \textbf{Proceso de desarrollo:} desarrollo guiado por especificaciones con asistencia de agentes de inteligencia artificial.
+    \item \textbf{Evaluación:} escala SUS \cite{brooke1996sus} y casos de prueba funcionales.
 \end{itemize}
 
 \section{Análisis y Modelamiento Funcional}
 \subsection{Requisitos}
 \subsection{Modelo funcional}
+El modelo funcional describe el ciclo de trabajo que la aplicación guía al usuario, estructurado en 15 actividades agrupadas en tres macrofases. Es una guía y no un proceso obligatorio: cada grupo puede omitir los pasos que no necesite.
+
+\textbf{Fase 1: Planificación (actividades 1 a 8).} Inicio formal del trabajo (1), creación del proyecto e invitación de integrantes (2), registro de integrantes (3), definición de acuerdos y objetivos compartidos (4), división del trabajo en tareas (5), asignación de responsables (6), establecimiento de plazos (7) y declaración de dependencias entre tareas con su organización en el tablero (8).
+
+\textbf{Fase 2: Ejecución y seguimiento (actividades 9 a 11).} Ejecución de las tareas individuales (9), actualización del estado y del avance en el tablero (10) y revisión continua del progreso, con alertas y la posibilidad de solicitar apoyo ante bloqueos (11).
+
+\textbf{Fase 3: Control y cierre (actividades 12 a 15).} Evaluación de retrasos y cuellos de botella (12), reorganización de plazos y reasignación de tareas críticas (13), revisión final del trabajo realizado (14) y cierre del proyecto con un resumen de aportes por integrante, visible solo para el grupo (15).
+
+\textbf{Reglas principales.}
+\begin{itemize}
+    \item Una tarea con predecesoras no terminadas se considera bloqueada.
+    \item No se permiten dependencias que formen ciclos.
+    \item Las tareas con precedencia determinan una ruta crítica, es decir, la secuencia de tareas cuyo retraso retrasa el trabajo completo.
+    \item Las alertas se calculan al ingresar a la aplicación y cubren tareas próximas a vencer o vencidas, tareas retrasadas que bloquean a otras, acumulación excesiva en una columna y desbalance de carga entre integrantes.
+\end{itemize}
+
+El prototipo implementa por completo las actividades 2, 3 y 5 a 13, y ofrece soporte básico para las actividades 1, 4, 14 y 15 mediante un campo de objetivo del proyecto, el cierre del proyecto y un resumen de tareas completadas por integrante.
 \subsection{Diseño de la solución}
 
 \section{Desarrollo del Prototipo}
