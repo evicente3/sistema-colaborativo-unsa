@@ -58,7 +58,7 @@ This feature stores:
    - [x] 6.1 Add `20261126000002_get_project_members.sql` and create `ProjectPage.tsx` (wired to `/projects/:projectId` in `App.tsx`): show project name, invite code, and member list. Tests: renders name and members, handles error/not-found states (covers R7, E5).
 
 7. **Sign-out**
-   - [ ] 7.1 Add a sign-out button (header or nav). Tests: clicking it clears session and redirects to login (covers R9).
+   - [x] 7.1 Add a sign-out button (header or nav). Tests: clicking it clears session and redirects to login (covers R9).
 
 ## Concepts likely new to the user
 - **Row-Level Security (RLS):** PostgreSQL policies that run *inside the database* for every query. Even if someone gets the Supabase anon key, they cannot read data they are not authorized for because the DB itself rejects the query. We will explain when writing the migration.

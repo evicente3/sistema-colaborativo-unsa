@@ -41,10 +41,45 @@ interface RouteGuardProps {
   children: ReactNode
 }
 
+function AuthenticatedHeader() {
+  const [isSigningOut, setIsSigningOut] = useState(false)
+  const [signOutError, setSignOutError] = useState<string | null>(null)
+
+  const handleSignOut = async () => {
+    setIsSigningOut(true)
+    setSignOutError(null)
+
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) {
+        setSignOutError('No se pudo cerrar sesión. Intenta de nuevo.')
+      }
+    } catch {
+      setSignOutError('No se pudo cerrar sesión. Intenta de nuevo.')
+    } finally {
+      setIsSigningOut(false)
+    }
+  }
+
+  return (
+    <header>
+      <button type="button" onClick={() => void handleSignOut()} disabled={isSigningOut}>
+        Cerrar sesión
+      </button>
+      {signOutError && <p role="alert">{signOutError}</p>}
+    </header>
+  )
+}
+
 function RequireAuth({ session, isLoading, children }: RouteGuardProps) {
   if (isLoading) return <p>Cargando...</p>
   if (!session) return <Navigate to="/login" replace />
-  return <>{children}</>
+  return (
+    <>
+      <AuthenticatedHeader />
+      {children}
+    </>
+  )
 }
 
 function PublicOnlyRoute({ session, isLoading, children }: RouteGuardProps) {
