@@ -42,13 +42,13 @@ No database schema or migration changes. All data continues to be stored and que
 1. Tailwind CSS and design token setup
    - [x] 1.1 Install `tailwindcss`, `postcss`, `autoprefixer` in `sistema/frontend` and configure theme tokens (colors, Nunito font, border radius) in `tailwind.config.js`, `postcss.config.js`, and `index.css`. Tests: build check and CSS generation. (covers R1)
 2. App shell & Navigation
-   - [ ] 2.1 Implement responsive `AppLayout` with top navigation bar, brand title, back navigation support, and sign out button. Tests: `AppLayout.test.tsx`, `App.test.tsx`. (covers R2, R3)
+   - [x] 2.1 Implement responsive `AppLayout` with top navigation bar, brand title, back navigation support, and sign out button. Tests: `AppLayout.test.tsx`, `App.test.tsx`. (covers R2, R3)
 3. Login page styling
-   - [ ] 3.1 Style `LoginPage` with centered responsive card, platform value proposition, and primary Google login button. Tests: `LoginPage.test.tsx`. (covers R4, E1)
+   - [x] 3.1 Style `LoginPage` with centered responsive card, platform value proposition, and primary Google login button. Tests: `LoginPage.test.tsx`. (covers R4, E1)
 4. Dashboard & Project forms styling
-   - [ ] 4.1 Style `DashboardPage` and `CreateOrJoinProject` with responsive cards, form fields, action buttons, project grid, empty state, and alert messages. Tests: `DashboardPage.test.tsx`, `CreateOrJoinProject.test.tsx`. (covers R5, R6, R8, E2, E3, E4)
+   - [x] 4.1 Style `DashboardPage` and `CreateOrJoinProject` with responsive cards, form fields, action buttons, project grid, empty state, and alert messages. Tests: `DashboardPage.test.tsx`, `CreateOrJoinProject.test.tsx`. (covers R5, R6, R8, E2, E3, E4)
 5. Project page header & metadata styling
-   - [ ] 5.1 Style `ProjectPage` header, invite code copy pill, member badges, and placeholder workspace section. Tests: `ProjectPage.test.tsx`. (covers R7, R8, E1, E2)
+   - [x] 5.1 Style `ProjectPage` header, invite code copy pill, member badges, and placeholder workspace section. Tests: `ProjectPage.test.tsx`. (covers R7, R8, E1, E2)
 
 ## Concepts likely new to the user
 - **Tailwind CSS Utility Classes:** Instead of writing custom CSS rules in separate stylesheets, Tailwind applies predefined utility classes (e.g. `flex`, `items-center`, `rounded-xl`, `bg-surface`) directly in the JSX markup for fast, consistent styling.

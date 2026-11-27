@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import type { Session } from '@supabase/supabase-js'
+import { AppLayout } from './components/AppLayout'
 import { supabase } from './lib/supabaseClient'
 import { DashboardPage } from './pages/DashboardPage'
 import { LoginPage } from './pages/LoginPage'
@@ -41,7 +42,17 @@ interface RouteGuardProps {
   children: ReactNode
 }
 
-function AuthenticatedHeader() {
+function LoadingState() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-surface px-4">
+      <p className="rounded-card bg-surface-card px-5 py-3 text-sm font-semibold text-text-muted shadow-card border border-border">
+        Cargando...
+      </p>
+    </div>
+  )
+}
+
+function RequireAuth({ session, isLoading, children }: RouteGuardProps) {
   const [isSigningOut, setIsSigningOut] = useState(false)
   const [signOutError, setSignOutError] = useState<string | null>(null)
 
@@ -61,29 +72,22 @@ function AuthenticatedHeader() {
     }
   }
 
-  return (
-    <header>
-      <button type="button" onClick={() => void handleSignOut()} disabled={isSigningOut}>
-        Cerrar sesión
-      </button>
-      {signOutError && <p role="alert">{signOutError}</p>}
-    </header>
-  )
-}
-
-function RequireAuth({ session, isLoading, children }: RouteGuardProps) {
-  if (isLoading) return <p>Cargando...</p>
+  if (isLoading) return <LoadingState />
   if (!session) return <Navigate to="/login" replace />
   return (
-    <>
-      <AuthenticatedHeader />
+    <AppLayout
+      userEmail={session.user.email}
+      onSignOut={handleSignOut}
+      isSigningOut={isSigningOut}
+      signOutError={signOutError}
+    >
       {children}
-    </>
+    </AppLayout>
   )
 }
 
 function PublicOnlyRoute({ session, isLoading, children }: RouteGuardProps) {
-  if (isLoading) return <p>Cargando...</p>
+  if (isLoading) return <LoadingState />
   if (session) return <Navigate to="/dashboard" replace />
   return <>{children}</>
 }
