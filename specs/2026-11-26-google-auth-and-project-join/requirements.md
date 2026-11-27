@@ -1,5 +1,5 @@
 # Requirements: Google Auth and Project Join
-Status: Draft
+Status: Approved
 
 ## Story
 As a group member, I want to sign in with Google and create or join a project via invite link or code, so that my group has a shared workspace.

@@ -1,6 +1,6 @@
 # Plan: Google Auth and Project Join
 Requirements: ./requirements.md
-Status: Draft
+Status: Approved
 
 ## Approach and decisions
 
@@ -35,7 +35,7 @@ This feature stores:
 
 ## Tasks
 1. **Infrastructure bootstrap**
-   - [ ] 1.1 Create `.env.example` and document required env vars. No tests (documentation only).
+   - [x] 1.1 Create `.env.example` and document required env vars. No tests (documentation only).
    - [ ] 1.2 Write `supabase/migrations/20261126000000_init.sql`: `projects` table, `project_members` table, and RLS policies. No tests (manual verification via Supabase Studio).
 
 2. **Supabase client**
