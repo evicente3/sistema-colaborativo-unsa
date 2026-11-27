@@ -39,7 +39,7 @@ This feature stores:
    - [x] 1.2 Write `supabase/migrations/20261126000000_init.sql`: `projects` table, `project_members` table, and RLS policies. No tests (manual verification via Supabase Studio).
 
 2. **Supabase client**
-   - [ ] 2.1 Create `sistema/frontend/src/lib/supabaseClient.ts` that reads env vars and exports a typed client. Tests: unit test that the client is defined (covers R2 prerequisite).
+   - [x] 2.1 Create `sistema/frontend/src/lib/supabaseClient.ts` that reads env vars and exports a typed client. Tests: unit test that the client is defined (covers R2 prerequisite).
 
 3. **Auth flow**
    - [ ] 3.1 Create `LoginPage.tsx` with the "Sign in with Google" button and silent-cancel behaviour. Tests: render test + simulate cancelled pop-up (covers R1, E4).
