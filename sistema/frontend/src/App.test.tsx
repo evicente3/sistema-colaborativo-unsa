@@ -18,6 +18,11 @@ vi.mock('./lib/supabaseClient', () => ({
       onAuthStateChange: mockOnAuthStateChange,
       signInWithOAuth: vi.fn(),
     },
+    from: vi.fn(() => ({
+      select: vi.fn(() => ({
+        order: vi.fn().mockResolvedValue({ data: [], error: null }),
+      })),
+    })),
   },
 }))
 

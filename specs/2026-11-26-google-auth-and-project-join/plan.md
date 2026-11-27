@@ -46,8 +46,8 @@ This feature stores:
    - [x] 3.2 Add an auth guard (protected route component). Tests: redirect-to-login when unauthenticated, redirect-to-dashboard when authenticated (covers R8).
 
 4. **Dashboard and project creation**
-   - [ ] 4.1 Create `DashboardPage.tsx` that lists the user's projects and shows the empty state with the combined prompt. Tests: render with empty list, render with projects (covers R3, R4).
-   - [ ] 4.2 Create `CreateOrJoinProject.tsx` — "Create a project" form. Tests: empty-name validation, success creates project and navigates (covers R5, E3, E5).
+   - [x] 4.1 Create `DashboardPage.tsx` that lists the user's projects and shows the empty state with the combined prompt. Tests: render with empty list, render with projects (covers R3, R4).
+   - [x] 4.2 Create `CreateOrJoinProject.tsx` — "Create a project" form. Tests: empty-name validation, success creates project and navigates (covers R5, E3, E5).
 
 5. **Join a project**
    - [ ] 5.1 Add "Join a project" to `CreateOrJoinProject.tsx`. Tests: invalid code shows error, duplicate join shows message, valid code adds member and navigates (covers R6, E1, E2, E5).

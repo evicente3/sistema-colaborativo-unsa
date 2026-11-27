@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabaseClient'
+import { DashboardPage } from './pages/DashboardPage'
 import { LoginPage } from './pages/LoginPage'
 
 function useAuthSession() {
@@ -68,9 +69,7 @@ export function AppRoutes() {
         path="/dashboard"
         element={
           <RequireAuth session={session} isLoading={isLoading}>
-            <main data-testid="dashboard-page">
-              <h1>Mis proyectos</h1>
-            </main>
+            <DashboardPage />
           </RequireAuth>
         }
       />
