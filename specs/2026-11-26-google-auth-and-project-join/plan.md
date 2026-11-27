@@ -43,7 +43,7 @@ This feature stores:
 
 3. **Auth flow**
    - [x] 3.1 Create `LoginPage.tsx` with the "Sign in with Google" button and silent-cancel behaviour. Tests: render test + simulate cancelled pop-up (covers R1, E4).
-   - [ ] 3.2 Add an auth guard (protected route component). Tests: redirect-to-login when unauthenticated, redirect-to-dashboard when authenticated (covers R8).
+   - [x] 3.2 Add an auth guard (protected route component). Tests: redirect-to-login when unauthenticated, redirect-to-dashboard when authenticated (covers R8).
 
 4. **Dashboard and project creation**
    - [ ] 4.1 Create `DashboardPage.tsx` that lists the user's projects and shows the empty state with the combined prompt. Tests: render with empty list, render with projects (covers R3, R4).
