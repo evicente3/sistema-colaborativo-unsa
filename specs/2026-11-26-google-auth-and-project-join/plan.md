@@ -42,7 +42,7 @@ This feature stores:
    - [x] 2.1 Create `sistema/frontend/src/lib/supabaseClient.ts` that reads env vars and exports a typed client. Tests: unit test that the client is defined (covers R2 prerequisite).
 
 3. **Auth flow**
-   - [ ] 3.1 Create `LoginPage.tsx` with the "Sign in with Google" button and silent-cancel behaviour. Tests: render test + simulate cancelled pop-up (covers R1, E4).
+   - [x] 3.1 Create `LoginPage.tsx` with the "Sign in with Google" button and silent-cancel behaviour. Tests: render test + simulate cancelled pop-up (covers R1, E4).
    - [ ] 3.2 Add an auth guard (protected route component). Tests: redirect-to-login when unauthenticated, redirect-to-dashboard when authenticated (covers R8).
 
 4. **Dashboard and project creation**
