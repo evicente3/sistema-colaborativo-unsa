@@ -25,6 +25,7 @@ This feature stores:
 ## Affected files
 - **Create:** `supabase/migrations/20261126000000_init.sql` — `projects` and `project_members` tables with RLS policies.
 - **Create:** `supabase/migrations/20261126000001_join_by_invite.sql` — `join_project_by_invite` `SECURITY DEFINER` RPC for invite-code lookup and join under RLS.
+- **Create:** `supabase/migrations/20261126000002_get_project_members.sql` — `get_project_members` `SECURITY DEFINER` RPC returning member display name, avatar, and email.
 - **Create:** `.env.example` — documents `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
 - **Create:** `sistema/frontend/src/lib/supabaseClient.ts` — initializes and exports the Supabase client.
 - **Create:** `sistema/frontend/src/pages/LoginPage.tsx` — sign-in screen with Google button.
@@ -54,7 +55,7 @@ This feature stores:
    - [x] 5.1 Add `20261126000001_join_by_invite.sql` (`SECURITY DEFINER` RPC) and "Join a project" form to `CreateOrJoinProject.tsx`. Tests: invalid code shows error, duplicate join shows message, valid code adds member and navigates, RPC error shows generic error (covers R6, E1, E2, E5).
 
 6. **Project page**
-   - [ ] 6.1 Create `ProjectPage.tsx`: show project name and member list. Tests: renders name and members (covers R7).
+   - [x] 6.1 Add `20261126000002_get_project_members.sql` and create `ProjectPage.tsx` (wired to `/projects/:projectId` in `App.tsx`): show project name, invite code, and member list. Tests: renders name and members, handles error/not-found states (covers R7, E5).
 
 7. **Sign-out**
    - [ ] 7.1 Add a sign-out button (header or nav). Tests: clicking it clears session and redirects to login (covers R9).

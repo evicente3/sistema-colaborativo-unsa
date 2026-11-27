@@ -4,6 +4,7 @@ import type { Session } from '@supabase/supabase-js'
 import { supabase } from './lib/supabaseClient'
 import { DashboardPage } from './pages/DashboardPage'
 import { LoginPage } from './pages/LoginPage'
+import { ProjectPage } from './pages/ProjectPage'
 
 function useAuthSession() {
   const [session, setSession] = useState<Session | null>(null)
@@ -70,6 +71,14 @@ export function AppRoutes() {
         element={
           <RequireAuth session={session} isLoading={isLoading}>
             <DashboardPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/projects/:projectId"
+        element={
+          <RequireAuth session={session} isLoading={isLoading}>
+            <ProjectPage />
           </RequireAuth>
         }
       />
