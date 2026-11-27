@@ -2,6 +2,7 @@
 
 > Documento de referencia personal y contexto para agentes. No forma parte del flujo oficial SDD: la constitución toma de aquí solo lo que le corresponde (principios, restricciones, stack). Nombre comercial de la app: pendiente.
 > Fuente: `secciones_articulo_corregidas.md`. Fecha límite del proyecto: **7 de diciembre de 2026, 23:59 (hora de Perú)**.
+> Identidad visual y componentes de interfaz: ver `DESIGN.md`.
 
 ## 1. Resumen
 
@@ -49,7 +50,7 @@ Prioridades propuestas (ajustables): **Esencial** = sin esto no hay prototipo; *
 | Objetivo del proyecto; cierre del proyecto con resumen de aportes (solo para el grupo) | Deseable |
 | Alerta de acumulación excesiva en una columna | Deseable |
 | Alerta de desbalance de carga entre integrantes | Opcional |
-| Cronograma (mini Gantt) resumido, solo lectura, para tareas con precedencia | Opcional |
+| Cronograma (mini Gantt) resumido, solo lectura, para tareas con precedencia (barras calculadas a partir de los plazos; ver §11) | Opcional |
 
 ## 7. Fuera de alcance
 
@@ -61,6 +62,8 @@ Mensajería o comentarios libres, archivos adjuntos, notificaciones externas o p
 - No se permiten dependencias que formen **ciclos**.
 - Las tareas con precedencia determinan una **ruta crítica** (secuencia cuyo retraso retrasa todo el trabajo).
 - Las alertas se **calculan al ingresar** y se muestran **dentro de la app** (sin tareas programadas). Tipos: por vencer o vencidas; retrasadas que bloquean a otras; acumulación en una columna; desbalance de carga.
+- El **estado** guardado de una tarea es uno de tres: pendiente, en progreso o completada. "Bloqueada" **no es un estado guardado**: se calcula a partir de las predecesoras no terminadas.
+- "Necesito ayuda" es una **marca** sobre una tarea en progreso, con una nota breve del responsable (la nota entra con "Notas de estado", función Deseable).
 
 ## 9. Flujo guía de 15 actividades
 
@@ -98,3 +101,5 @@ Mensajería o comentarios libres, archivos adjuntos, notificaciones externas o p
 - **Alcance real de las alertas:** cuántas entran en el MVP dado el plazo de una semana de implementación.
 - **Reglas de reasignación y de cambio de plazo:** ¿requieren nota obligatoria?
 - **Resumen de aportes:** qué métricas incluye exactamente (por ahora, tareas completadas por integrante).
+- **Fechas del cronograma:** las tareas solo tienen plazo, pero un Gantt necesita inicio y fin. Propuesta: calcular el inicio como el plazo de la predecesora más tardía (o la fecha de creación si no tiene predecesoras). ¿Se acepta o se agrega un campo de fecha de inicio?
+- **Alerta "por vencer":** ¿con cuántos días de anticipación una tarea se considera por vencer?
