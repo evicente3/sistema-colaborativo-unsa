@@ -36,7 +36,7 @@ This feature stores:
 ## Tasks
 1. **Infrastructure bootstrap**
    - [x] 1.1 Create `.env.example` and document required env vars. No tests (documentation only).
-   - [ ] 1.2 Write `supabase/migrations/20261126000000_init.sql`: `projects` table, `project_members` table, and RLS policies. No tests (manual verification via Supabase Studio).
+   - [x] 1.2 Write `supabase/migrations/20261126000000_init.sql`: `projects` table, `project_members` table, and RLS policies. No tests (manual verification via Supabase Studio).
 
 2. **Supabase client**
    - [ ] 2.1 Create `sistema/frontend/src/lib/supabaseClient.ts` that reads env vars and exports a typed client. Tests: unit test that the client is defined (covers R2 prerequisite).
