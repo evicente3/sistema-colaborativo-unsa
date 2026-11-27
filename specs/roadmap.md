@@ -5,7 +5,7 @@ When a story gets a spec, append `(spec: specs/YYYY-MM-DD-name)`. Tick it when m
 
 ## Phase 1: Walking skeleton
 - [x] As a group member, I want to sign in with Google and create or join a project via invite link or code, so that my group has a shared workspace. (spec: specs/2026-11-26-google-auth-and-project-join)
-- [ ] As a group member, I want a clean, responsive Tailwind UI for login, dashboard, and project pages, so that the shared workspace is presentable and easy to use on mobile and desktop.
+- [ ] As a group member, I want a clean, responsive Tailwind UI for login, dashboard, and project pages, so that the shared workspace is presentable and easy to use on mobile and desktop. (spec: specs/2026-11-27-responsive-tailwind-ui)
 - [ ] As a group member, I want to create a task with a title, assignee, and deadline and see it on the project board, so that our work is visible end-to-end.
 
 ## Phase 2: Essential MVP

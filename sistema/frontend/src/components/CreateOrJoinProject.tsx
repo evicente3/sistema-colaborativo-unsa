@@ -118,45 +118,99 @@ export function CreateOrJoinProject() {
   }
 
   return (
-    <section aria-label="Crear o unirse a un proyecto">
-      <div>
-        <h2>Crear un proyecto</h2>
-        <form onSubmit={handleCreateSubmit} noValidate>
-          <label htmlFor="projectName">Nombre del proyecto</label>
-          <input
-            id="projectName"
-            name="projectName"
-            type="text"
-            value={projectName}
-            onChange={(event) => setProjectName(event.target.value)}
-            placeholder="Ej. Trabajo de Investigación"
+    <section
+      aria-label="Crear o unirse a un proyecto"
+      className="grid grid-cols-1 gap-6 md:grid-cols-2"
+    >
+      <div className="rounded-card border border-border bg-surface-card p-6 shadow-card">
+        <h2 className="text-lg font-bold text-text-main">Crear un proyecto</h2>
+        <p className="mt-1 text-sm text-text-muted">
+          Inicia un nuevo espacio y comparte el código con tu grupo.
+        </p>
+        <form onSubmit={handleCreateSubmit} noValidate className="mt-4 space-y-4">
+          <div className="space-y-1.5">
+            <label
+              htmlFor="projectName"
+              className="block text-sm font-semibold text-text-main"
+            >
+              Nombre del proyecto
+            </label>
+            <input
+              id="projectName"
+              name="projectName"
+              type="text"
+              value={projectName}
+              onChange={(event) => setProjectName(event.target.value)}
+              placeholder="Ej. Trabajo de Investigación"
+              disabled={isCreating}
+              className="w-full rounded-control border border-border bg-surface-card px-3 py-2.5 text-sm text-text-main placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
+            />
+          </div>
+          <button
+            type="submit"
             disabled={isCreating}
-          />
-          <button type="submit" disabled={isCreating}>
+            className="w-full rounded-control bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary transition-opacity hover:opacity-95 disabled:opacity-60 sm:w-auto"
+          >
             {isCreating ? 'Creando...' : 'Crear proyecto'}
           </button>
-          {createError && <p role="alert">{createError}</p>}
+          {createError && (
+            <p
+              role="alert"
+              className="rounded-control bg-alert-late-soft px-3 py-2 text-sm font-semibold text-alert-late-text"
+            >
+              {createError}
+            </p>
+          )}
         </form>
       </div>
 
-      <div>
-        <h2>Unirse a un proyecto</h2>
-        <form onSubmit={handleJoinSubmit} noValidate>
-          <label htmlFor="inviteCode">Código de invitación</label>
-          <input
-            id="inviteCode"
-            name="inviteCode"
-            type="text"
-            value={inviteCode}
-            onChange={(event) => setInviteCode(event.target.value)}
-            placeholder="Ej. 550e8400-e29b-41d4-a716-446655440000"
+      <div className="rounded-card border border-border bg-surface-card p-6 shadow-card">
+        <h2 className="text-lg font-bold text-text-main">Unirse a un proyecto</h2>
+        <p className="mt-1 text-sm text-text-muted">
+          Ingresa el código de invitación que te compartió tu equipo.
+        </p>
+        <form onSubmit={handleJoinSubmit} noValidate className="mt-4 space-y-4">
+          <div className="space-y-1.5">
+            <label
+              htmlFor="inviteCode"
+              className="block text-sm font-semibold text-text-main"
+            >
+              Código de invitación
+            </label>
+            <input
+              id="inviteCode"
+              name="inviteCode"
+              type="text"
+              value={inviteCode}
+              onChange={(event) => setInviteCode(event.target.value)}
+              placeholder="Ej. 550e8400-e29b-41d4-a716-446655440000"
+              disabled={isJoining}
+              className="w-full rounded-control border border-border bg-surface-card px-3 py-2.5 text-sm text-text-main placeholder:text-text-muted focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-60"
+            />
+          </div>
+          <button
+            type="submit"
             disabled={isJoining}
-          />
-          <button type="submit" disabled={isJoining}>
+            className="w-full rounded-control border border-primary/30 bg-status-progress-soft px-4 py-2.5 text-sm font-semibold text-status-progress-text transition-colors hover:bg-primary hover:text-on-primary disabled:opacity-60 sm:w-auto"
+          >
             {isJoining ? 'Uniéndose...' : 'Unirse al proyecto'}
           </button>
-          {joinError && <p role="alert">{joinError}</p>}
-          {joinInfo && <p role="status">{joinInfo}</p>}
+          {joinError && (
+            <p
+              role="alert"
+              className="rounded-control bg-alert-late-soft px-3 py-2 text-sm font-semibold text-alert-late-text"
+            >
+              {joinError}
+            </p>
+          )}
+          {joinInfo && (
+            <p
+              role="status"
+              className="rounded-control bg-status-progress-soft px-3 py-2 text-sm font-semibold text-status-progress-text"
+            >
+              {joinInfo}
+            </p>
+          )}
         </form>
       </div>
     </section>
