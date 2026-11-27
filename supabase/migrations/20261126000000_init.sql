@@ -15,6 +15,18 @@ CREATE TABLE projects (
 -- Enable RLS so the policies below are enforced for every query.
 ALTER TABLE projects ENABLE ROW LEVEL SECURITY;
 
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 2. project_members
+-- ─────────────────────────────────────────────────────────────────────────────
+CREATE TABLE project_members (
+  project_id  uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+  user_id     uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  joined_at   timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (project_id, user_id)
+);
+
+ALTER TABLE project_members ENABLE ROW LEVEL SECURITY;
+
 -- A user may read a project only if they are a member of it.
 CREATE POLICY "members can read their projects"
   ON projects FOR SELECT
@@ -44,18 +56,6 @@ CREATE POLICY "members can update their projects"
 CREATE POLICY "authenticated users can create projects"
   ON projects FOR INSERT
   WITH CHECK (auth.role() = 'authenticated');
-
--- ─────────────────────────────────────────────────────────────────────────────
--- 2. project_members
--- ─────────────────────────────────────────────────────────────────────────────
-CREATE TABLE project_members (
-  project_id  uuid NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
-  user_id     uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  joined_at   timestamptz NOT NULL DEFAULT now(),
-  PRIMARY KEY (project_id, user_id)
-);
-
-ALTER TABLE project_members ENABLE ROW LEVEL SECURITY;
 
 -- A user may see the member list only for projects they already belong to.
 CREATE POLICY "members can read membership rows"
