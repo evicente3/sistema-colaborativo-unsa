@@ -4,7 +4,7 @@ Each item is a user story: `As a <user>, I want <task>, so that <benefit>.`
 When a story gets a spec, append `(spec: specs/YYYY-MM-DD-name)`. Tick it when merged.
 
 ## Phase 1: Walking skeleton
-- [ ] As a group member, I want to sign in with Google and create or join a project via invite link or code, so that my group has a shared workspace. (spec: specs/2026-11-26-google-auth-and-project-join)
+- [x] As a group member, I want to sign in with Google and create or join a project via invite link or code, so that my group has a shared workspace. (spec: specs/2026-11-26-google-auth-and-project-join)
 - [ ] As a group member, I want to create a task with a title, assignee, and deadline and see it on the project board, so that our work is visible end-to-end.
 
 ## Phase 2: Essential MVP

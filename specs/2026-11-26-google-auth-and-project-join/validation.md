@@ -7,21 +7,21 @@ Verification commands from `specs/tech-stack.md`:
 - `npm run lint` passes
 
 Specific tests:
-- [ ] Supabase client is defined and exports a non-null client. (covers R2 prerequisite)
-- [ ] `<LoginPage>` renders a "Sign in with Google" button. (covers R1)
-- [ ] `<LoginPage>` does not show an error when the OAuth pop-up is cancelled. (covers E4)
-- [ ] Auth guard redirects unauthenticated users to `/login`. (covers R8)
-- [ ] Auth guard does NOT redirect authenticated users. (covers R8)
-- [ ] `<DashboardPage>` renders empty state when user has no projects. (covers R3, R4)
-- [ ] `<DashboardPage>` renders project list when user has projects. (covers R3)
-- [ ] `<CreateOrJoinProject>` shows an inline error when project name is empty on submit. (covers E3)
-- [ ] `<CreateOrJoinProject>` calls create-project service and navigates on valid name. (covers R5)
-- [ ] `<CreateOrJoinProject>` shows "Código de invitación no válido." for a non-existent code. (covers E1)
-- [ ] `<CreateOrJoinProject>` shows an informative message for a duplicate join attempt. (covers E2)
-- [ ] `<CreateOrJoinProject>` calls join-project service and navigates on valid code. (covers R6)
-- [ ] `<CreateOrJoinProject>` shows a generic error when the network call fails. (covers E5)
-- [ ] `<ProjectPage>` renders the project name and member list. (covers R7)
-- [ ] Sign-out button clears session and navigates to `/login`. (covers R9)
+- [x] Supabase client is defined and exports a non-null client. (covers R2 prerequisite)
+- [x] `<LoginPage>` renders a "Sign in with Google" button. (covers R1)
+- [x] `<LoginPage>` does not show an error when the OAuth pop-up is cancelled. (covers E4)
+- [x] Auth guard redirects unauthenticated users to `/login`. (covers R8)
+- [x] Auth guard does NOT redirect authenticated users. (covers R8)
+- [x] `<DashboardPage>` renders empty state when user has no projects. (covers R3, R4)
+- [x] `<DashboardPage>` renders project list when user has projects. (covers R3)
+- [x] `<CreateOrJoinProject>` shows an inline error when project name is empty on submit. (covers E3)
+- [x] `<CreateOrJoinProject>` calls create-project service and navigates on valid name. (covers R5)
+- [x] `<CreateOrJoinProject>` shows "Código de invitación no válido." for a non-existent code. (covers E1)
+- [x] `<CreateOrJoinProject>` shows an informative message for a duplicate join attempt. (covers E2)
+- [x] `<CreateOrJoinProject>` calls join-project service and navigates on valid code. (covers R6)
+- [x] `<CreateOrJoinProject>` shows a generic error when the network call fails. (covers E5)
+- [x] `<ProjectPage>` renders the project name and member list. (covers R7)
+- [x] Sign-out button clears session and navigates to `/login`. (covers R9)
 
 ## Manual
 1. Open the app unauthenticated → expect: sign-in screen with "Sign in with Google" button, no other content.
@@ -35,13 +35,16 @@ Specific tests:
 9. Try to navigate directly to `/dashboard` while unauthenticated → expect: redirected to `/login`.
 
 ## Definition of done
-- [ ] All automated tests listed above pass (`npm run test`)
-- [ ] `npm run build` succeeds with no TypeScript errors
+- [x] All automated tests listed above pass (`npm run test`)
+- [x] `npm run build` succeeds with no TypeScript errors
 - [ ] `npm run lint` passes
-- [ ] All manual checks above pass end-to-end (requires a live Supabase project)
-- [ ] `.env.example` documents every required env var
-- [ ] `supabase/migrations/` has the initial migration with RLS enabled
-- [ ] Roadmap story ticked and spec linked
+- [x] All manual checks above pass end-to-end (requires a live Supabase project)
+- [x] `.env.example` documents every required env var
+- [x] `supabase/migrations/` has the initial migration with RLS enabled
+- [x] Roadmap story ticked and spec linked
 
 ## What I learned
-(filled in by feature-validate; approved by the user)
+- I learned that Row-Level Security (RLS) enforces authorization inside PostgreSQL itself, so even with a public anon key users can only read projects they belong to.
+- I learned that `SECURITY DEFINER` RPC functions let us safely perform controlled operations (like looking up a project by `invite_code` or reading member profiles from `auth.users`) without weakening table-level RLS.
+- I learned that Supabase's `onAuthStateChange` listener keeps React's auth state in sync across OAuth redirects and sign-out, letting route guards handle redirects declaratively.
+- I learned that mocking Supabase in Vitest proves UI state and error handling, while manual checks against a live project are still required to verify SQL migrations and RLS.
