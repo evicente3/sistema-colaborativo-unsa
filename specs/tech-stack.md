@@ -17,17 +17,19 @@
 - **Migration discipline:** Never edit an already-applied migration; create a new migration file for schema changes.
 - **Reference docs:** `docs/VISION.md` and `README.md` are reference context only (note: `README.md` mentions FastAPI in `sistema/backend/`, which is superseded by Supabase per `docs/VISION.md`).
 - **Permissions:** Any member of a project can create, edit, reassign, and update deadlines for tasks in that project.
+- **RLS recursion guard:** Never write a self-referencing RLS policy (e.g. `project_members` querying `project_members`); wrap membership checks in a `SECURITY DEFINER` helper that checks `auth.uid()`.
 
 ## Conventions
 - **Language:** Specs, code, identifiers, and commit messages in English; all user-facing UI copy in Spanish.
+- **Styling:** Every UI story ships with responsive Tailwind CSS styling (mobile and desktop); never leave user-facing pages as unstyled HTML.
 - **Folder layout:** App code under `sistema/frontend/`; domain module under `sistema/frontend/src/domain/`; tests alongside domain/feature modules.
 - **Error handling:** Validate inputs and handle Supabase/network errors at UI/service boundaries; keep domain functions throwing typed errors or returning explicit result objects.
 
 ## Verification commands
 | Command | Run from | Status |
 |---|---|---|
-| `npm run test` (Vitest) | `sistema/frontend` | to configure |
-| `npm run build` (`tsc && vite build`) | `sistema/frontend` | to configure |
+| `npm run test` (Vitest) | `sistema/frontend` | configured |
+| `npm run build` (`tsc && vite build`) | `sistema/frontend` | configured |
 | `npm run lint` | `sistema/frontend` | to configure |
 
 ## Git
